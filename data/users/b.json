@@ -1,0 +1,355 @@
+{
+   "username": "Dennis \ud83e\udd13",
+   "pwd": "b",
+   "email": "Livak_Dennis@teams.hs-ludwigsburg.de",
+   "status": "normal",
+   "letzterLogIn": "06.07.2025, 15:25",
+   "anzahlMahnungen": 0,
+   "anzahlAbschleppungen": 0,
+   "ParkkarteVorhanden": false,
+   "gesperrt": false,
+   "fahrzeuge": [
+      {
+         "Landerkennung": "D",
+         "Kennzeichen": "BBLL1234",
+         "Avatar": {
+            "name": "Muscle",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView.png"
+         },
+         "Parkhistorie": [
+            {
+               "Datum": "04.07.2025, 11:20",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "11:20:55",
+               "Ende": "11:21:03",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 11:34",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "11:34:54",
+               "Ende": "11:34:59",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 11:55",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 10.0,
+               "Start": "11:55:37",
+               "Ende": "11:56:04",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 12:03",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "12:03:27",
+               "Ende": "12:03:37",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 12:04",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "12:04:58",
+               "Ende": "12:05:51",
+               "GesamtpreisInEuro": 0.02
+            },
+            {
+               "Datum": "04.07.2025, 12:12",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "12:12:45",
+               "Ende": "12:12:56",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 12:16",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "12:16:23",
+               "Ende": "12:16:30",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 12:25",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 10.0,
+               "Start": "12:25:26",
+               "Ende": "12:25:52",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 12:33",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "12:33:33",
+               "Ende": "12:33:49",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 12:47",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "12:47:38",
+               "Ende": "12:47:56",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 12:55",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "12:55:40",
+               "Ende": "12:57:01",
+               "GesamtpreisInEuro": 0.03
+            },
+            {
+               "Datum": "04.07.2025, 12:59",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 30.0,
+               "Start": "12:59:24",
+               "Ende": "12:59:56",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 13:04",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "13:04:38",
+               "Ende": "13:05:56",
+               "GesamtpreisInEuro": 0.03
+            },
+            {
+               "Datum": "04.07.2025, 13:26",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "13:26:56",
+               "Ende": "13:27:21",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 13:28",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "13:28:05",
+               "Ende": "13:28:27",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 13:34",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "13:34:10",
+               "Ende": "13:34:38",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 13:44",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "13:44:15",
+               "Ende": "13:44:46",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 13:57",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 15.0,
+               "Start": "13:57:25",
+               "Ende": "13:57:30",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 14:03",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "14:03:44",
+               "Ende": "14:03:58",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 14:11",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "14:11:39",
+               "Ende": "14:11:55",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 14:21",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "14:21:46",
+               "Ende": "14:22:01",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 14:30",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "14:30:43",
+               "Ende": "14:30:55",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 14:31",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "14:31:38",
+               "Ende": "14:31:47",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 14:35",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "14:35:23",
+               "Ende": "14:35:27",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 15:05",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "15:05:41",
+               "Ende": "15:06:22",
+               "GesamtpreisInEuro": 0.02
+            },
+            {
+               "Datum": "04.07.2025, 15:34",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 10.0,
+               "Start": "15:34:30",
+               "Ende": "15:34:58",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 15:51",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 15.0,
+               "Start": "15:51:19",
+               "Ende": "15:52:35",
+               "GesamtpreisInEuro": 0.03
+            },
+            {
+               "Datum": "04.07.2025, 16:05",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 15.0,
+               "Start": "16:05:18",
+               "Ende": "16:05:48",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 16:09",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "16:09:01",
+               "Ende": "16:09:04",
+               "GesamtpreisInEuro": 0.0
+            }
+         ]
+      },
+      {
+         "Landerkennung": "A",
+         "Kennzeichen": "W2727D",
+         "Avatar": {
+            "name": "Limousine",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView4.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView4.png"
+         },
+         "Parkhistorie": [
+            {
+               "Datum": "04.07.2025, 12:05",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "12:05:24",
+               "Ende": "12:05:44",
+               "GesamtpreisInEuro": 0.01
+            },
+            {
+               "Datum": "04.07.2025, 12:53",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "12:53:47",
+               "Ende": "12:53:53",
+               "GesamtpreisInEuro": 0.0
+            }
+         ]
+      },
+      {
+         "Landerkennung": "H",
+         "Kennzeichen": "AABP022",
+         "Avatar": {
+            "name": "Speed",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView2.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView2.png"
+         },
+         "Parkhistorie": []
+      }
+   ]
+}

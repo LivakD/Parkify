@@ -1,0 +1,12 @@
+{
+    "username": "Admin",
+    "pwd": "admin",
+    "email": "a@a",
+    "status": "admin",
+    "letzterLogIn": "09.05.2025, 19:41",
+    "anzahlMahnungen": 0,
+    "anzahlAbschleppungen": 0,
+    "ParkkarteVorhanden": false,
+    "gesperrt": false,
+    "fahrzeuge": []
+}

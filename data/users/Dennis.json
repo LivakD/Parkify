@@ -1,0 +1,23 @@
+{
+   "username": "",
+   "pwd": "d",
+   "email": "",
+   "status": "normal",
+   "letzterLogIn": "27.06.2025, 12:16",
+   "anzahlMahnungen": 0,
+   "anzahlAbschleppungen": 0,
+   "ParkkarteVorhanden": false,
+   "gesperrt": false,
+   "fahrzeuge": [
+      {
+         "Landerkennung": "",
+         "Kennzeichen": "",
+         "Avatar": {
+            "name": "Limousine",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView4.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView4.png"
+         },
+         "Parkhistorie": []
+      }
+   ]
+}

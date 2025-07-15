@@ -1,0 +1,34 @@
+{
+   "username": "patrick",
+   "pwd": "1234",
+   "email": "abc@gmx.eu",
+   "status": "normal",
+   "letzterLogIn": "04.07.2025, 13:27",
+   "anzahlMahnungen": 0,
+   "anzahlAbschleppungen": 0,
+   "ParkkarteVorhanden": false,
+   "gesperrt": false,
+   "fahrzeuge": [
+      {
+         "Landerkennung": "D",
+         "Kennzeichen": "LB-D-111",
+         "Avatar": {
+            "name": "Limousine",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView4.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView4.png"
+         },
+         "Parkhistorie": [
+            {
+               "Datum": "11.05.2025, 16:10",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 25.0,
+               "Start": "16:10:02",
+               "Ende": "20:26:45",
+               "GesamtpreisInEuro": 6.42
+            }
+         ]
+      }
+   ]
+}

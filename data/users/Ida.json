@@ -1,0 +1,54 @@
+{
+   "username": "",
+   "pwd": "abc",
+   "email": "",
+   "status": "normal",
+   "letzterLogIn": "04.07.2025, 14:01",
+   "anzahlMahnungen": 0,
+   "anzahlAbschleppungen": 0,
+   "ParkkarteVorhanden": false,
+   "gesperrt": false,
+   "fahrzeuge": [
+      {
+         "Landerkennung": "",
+         "Kennzeichen": "TETE45",
+         "Avatar": {
+            "name": "Limousine",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView4.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView4.png"
+         },
+         "Parkhistorie": [
+            {
+               "Datum": "04.07.2025, 14:00",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "14:00:42",
+               "Ende": "14:01:20",
+               "GesamtpreisInEuro": 0.02
+            },
+            {
+               "Datum": "04.07.2025, 14:01",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "14:01:24",
+               "Ende": "14:01:25",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 14:01",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 5.0,
+               "Start": "14:01:28",
+               "Ende": "14:01:30",
+               "GesamtpreisInEuro": 0.0
+            }
+         ]
+      }
+   ]
+}

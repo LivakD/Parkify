@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deine Einstellungen</title>
+    <link rel="icon" type="image/x-icon" href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        #Schriftzug {
+            width: 150px;
+            margin: -25px 0 -40px -15px;
+            background-color: #d3d3d3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .Cont {
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateX(100%);
+            display: none;
+        }
+
+        .Cont.exit-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .Cont.exit-right {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .Cont.active {
+            display: block;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-button {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #374151;
+            font-size: 30px;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu a {
+            padding: 0.5rem 0;
+        }
+
+        main {/*
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;*/
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            margin-bottom: 0;
+            /*border-radius: 0.5rem;*/
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            height: 75%;
+        }
+
+        .section.blue {
+            background-color: #dbeafe;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+        }
+
+        .standortData {
+            height: fit-content;
+            margin: 0;
+            float: right;
+            display: inline-flex;
+            right: 23px;
+            position: absolute;
+            top: 10px;
+            font-size: 10px;
+        }
+
+        .topHeader {
+            height: fit-content;
+            margin: 0;
+            float: left;
+            display: inline-flex;
+            left: 23px;
+            position: absolute;
+            top: 10px;
+            font-size: 20px;
+        }
+        
+
+        #topView {
+        width: 100px;
+        z-index: 1000;
+        position: absolute;
+        margin-top: -25px;
+        }
+
+        #Wertanzeige {
+            display: flex;
+            justify-content: center;
+        }
+
+        #carSelection {
+            display: block;
+        }
+
+        #buttonNext, #buttonPrevious, #buttonPreviousCarChange, #buttonSubmit, #buttonAddCard, #buttonDeleteCard {
+            cursor: pointer;
+            bottom: 0px;
+            float: right;
+            background-color: lightgreen;
+            border: 2px solid green;
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        #buttonAddCard, #buttonDeleteCard {
+            width: fit-content;
+            font-size: 20px;
+            font-weight: bold;
+            color: green;
+            padding: 10px 10px;
+        }
+
+        #buttonDeleteCard {
+            color: orangered;
+            background-color: orange;
+            border: 2px solid orangered;
+        }
+
+        #buttonPrevious, #buttonPreviousCarChange {
+            float: left;
+            rotate: 180deg;
+            background-color: lightgray;
+            border: 2px solid gray;
+        }
+
+        #buttonSubmit {
+            background-color: #dbeafe;
+            border: 2px solid lightskyblue;
+            width: fit-content;
+            color: yellow;
+            font-size: 20px;
+            padding: 0 15px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        
+        #buttonUp, #buttonDown {
+            cursor: pointer;
+            width: 50%;
+            max-width: 250px;
+            height: 50px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0px 10px 5px gray;
+            background-color: #dbeafe;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            padding-top: 15px;
+
+        }
+
+        .middleForm {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .currentCars {
+            width: 90px;
+        }
+
+        .carAvatars {
+            width: 50px;
+        }
+
+        #avatarContainer {
+            display: block;
+        }
+
+        #country {
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #platenumber, #addPlatenumber {
+            padding: 5px;
+            background-color: white;
+            color: black;
+            border-radius: 0 5px 5px 0;
+            display: block;
+            width: 100px;
+        }
+
+        #addPlatenumber {
+            display: flex;
+            justify-content: center;
+            margin-left: 20px;
+        }
+
+        #blue {
+            background-color: blue;
+            color: white;
+            text-align: right;
+            border-radius: 7px 0 0 7px;
+            width: fit-content;
+            font-size: 20px;
+            padding: 3px;
+        }
+
+        #numberplate {
+        color: black;
+        text-align: left;
+        width: 120px;
+        max-width: 120px;
+        border-radius: 0 7px 7px 0;
+        margin-left: 0;
+        height: 100%;
+        font-size: 20px;
+        border: none;
+        background-color: whitesmoke;
+    }
+
+
+
+
+
+        @media (max-width: 768px) {
+            /*
+            .menu-button {
+                display: block;
+            }
+
+            nav.desktop {
+                display: none;
+            }
+
+            .mobile-menu.show {
+                display: flex;
+            }*/
+
+            #Schriftzug {
+                margin-left: -32px;
+            }
+            .section {
+                height: 80%;
+            }
+        }
+
+    </style>
+
+    <script>
+    
+    function changeContainer(currentId, previousId, direction) {
+        const current = document.getElementById(currentId);
+        const next = document.getElementById(previousId);
+
+        if (direction === 'next') {
+            current.classList.add("exit-left");
+        } else if (direction === 'back') {
+            current.classList.add("exit-right");
+        }
+
+        next.style.display = "block";
+
+        setTimeout(() => {
+            current.classList.remove("active", "exit-left", "exit-right");
+            current.style.display = "none";
+            next.classList.add("active");
+        }, 50);
+    }
+
+    function changeContainerSlow(currentId, previousId, formToSubmit, direction) {
+        const current = document.getElementById(currentId);
+        const next = document.getElementById(previousId);
+        const submitForm = document.getElementById(formToSubmit);
+
+        if (direction === 'next') {
+            current.classList.add("exit-left");
+        } else if (direction === 'back') {
+            current.classList.add("exit-right");
+        }
+
+        next.style.display = "block";
+
+        setTimeout(() => {
+            current.classList.remove("active", "exit-left", "exit-right");
+            current.style.display = "none";
+            next.classList.add("active");
+        }, 50);
+
+        setTimeout(() => {
+            submitForm.submit();
+        }, 50);
+        
+    }
+
+    function displayForm(formToShow) {
+        const showForm = document.getElementById(formToShow);
+        const backButton = document.getElementById("buttonPreviousCarChange");
+
+        if (showForm.style.display === "none") {
+            showForm.style.display = "block";
+            backButton.style.display = "none";
+        } else if (showForm.style.display === "block") {
+            showForm.style.display = "none";
+            backButton.style.display = "block";
+        }
+    }
+
+    function countryPlateUpdate() {
+        const selectElement = document.getElementById("addCountry");
+        const selectedValue = selectElement.value;
+
+        document.getElementById("blue").innerHTML = selectedValue;
+
+        if (selectedValue.length === 2) {
+            document.getElementById("blue").style.fontSize = "10px";
+        } else if (selectedValue.length === 1) 
+            document.getElementById("blue").style.fontSize = "15.5px";
+    }
+
+
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav">
+            <img id="Schriftzug" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Schriftzug.png" alt="Parkify-Logo">
+            <button id="menu-toggle" class="menu-button">☰</button>
+            <nav class="desktop">
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/Home?accname={{ accname }}&pwd={{ pwd }}">🏠</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/History?accname={{ accname }}&pwd={{ pwd }}">📊</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/Settings?accname={{ accname }}&pwd={{ pwd }}">⚙️</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/LogIn.html">🚪</a>
+            </nav>
+        </div>
+        <!-- Mobile Menü -->
+        
+    </header>
+
+    <main>
+        <!-- Oberer Bereich -->
+        <section class="section blue" style="height: 60%;">
+            <p class="topHeader">{{ userData.username }}'s</p>
+            <p class="topHeader" style="top: 35px;">Settings</p>
+            <p class="standortData">Standort: <strong>{{ cityData.stadt }}</strong>, <strong>{{ cityData.parkraum }}</strong></p>
+            <p class="standortData" style="top: 25px;">Aktueller Stundentarif: <strong>{{ PreisProStunde }} €</strong></p>
+            <p class="standortData" style="top: 40px;">Abschleppunternehmen: <strong><a href="mailto:{{ cityData.abschleppUnternehmen }}?subject=Anfrage Entfernung Fahrzeug von {{ cityData.parkraum }}">{{ cityData.abschleppUnternehmen }}</strong></a></p>        
+            <p class="standortData" style="top: 55px;">Dein Accountname: <strong>{{ accname }}</strong></p>
+        </section>
+        <!-- Unterer Bereich -->
+        <section class="section" style="bottom: 0px;">
+            <div id="welcomeContainer" class="Cont active">
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormChangeUsername', 'next')">👤 <strong>Username</strong></h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormChangePwd', 'next')">🔐 <strong>Passwort</strong></h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormChangeEmail', 'next')">📧 <strong>Email</strong></h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormChangeParkCard', 'next')">🪪 <strong>Parkkarte</strong></h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormChangeCars', 'next')">✍️ <strong>Fahrzeug bearbeiten</strong></h3>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px;" onclick="changeContainer('welcomeContainer', 'ContainerFormAddCars', 'next')">🚙 <strong>Fahrzeug hinzufügen</strong></h3>
+            
+            </div>
+            <div id="ContainerFormChangeUsername" class="Cont">
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Hallo <strong>{{ userData.username }}</strong> 👋</h3>
+                <p>Dein Name gefällt dir nicht mehr? - Schade! Aber kein Problem 😌 Gib unten einfach deinen neuen Namen ein!</p>
+                <form action="#" id="changeUsername" class="middleForm">
+                    <input type="text" name="neuerUsername" id="neuerUsername" placeholder="Dein neuer Username">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeUsername', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormChangeUsername', 'welcomeContainer', 'changeUsername', 'back')">➔</div>    
+                </form>
+            </div>
+            <div id="ContainerFormChangePwd" class="Cont">
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Dein aktuelles Passwort: <strong>{{ userData.pwd }}</strong></h3>
+                <p>Mehr Sicherheit? 🔐 Gib unten einfach ein Neues ein!</p>
+                <form action="#" id="changePwd" class="middleForm">
+                    <input type="email" name="neueEmail" id="neueEmail" placeholder="Dein neues Passwort">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangePwd', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormChangePwd', 'welcomeContainer', 'changePwd', 'back')">➔</div>    
+                </form>
+            </div>
+            <div id="ContainerFormChangeEmail" class="Cont">
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Deine aktuelle Email: <strong>{{ userData.email }}</strong> 👋</h3>
+                <p>Neue Email-Adresse? 📧 Gib unten einfach die Neue ein!</p>
+                <form action="#" id="changeEmail" class="middleForm">
+                    <input type="email" name="neueEmail" id="neueEmail" placeholder="info@parkify.com">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeEmail', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormChangeEmail', 'welcomeContainer', 'changeEmail', 'back')">➔</div>    
+                </form>
+            </div>
+            <div id="ContainerFormChangeParkCard" class="Cont">
+            {% if userData.parkKarteVorhanden == False %}
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Aktuell besitzt du <strong>keine</strong> PakifyCard ❌</h3>
+                <p>Du interessierst dich dafür und möchtest deinen Parkvorgang noch effizienter gestalten? 📈</p>
+                <p>Dann melde dich bei dem zuständigen Amt in {{ cityData.stadt }}!</p>
+                <p>Du hast deine ParkifyCard bereits erhalten und möchtest sie aktivieren? Dann füge Sie über die untere Schaltfläche hinzu! 😄</p>
+                <form action="#" id="changeParkCardToTrue" class="middleForm">
+                    <input type="hidden" name="parkKarte" id="parkKarte" value="1">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeParkCard', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonAddCard" onclick="changeContainerSlow('ContainerFormChangeParkCard', 'welcomeContainer', 'changeParkCardToTrue', 'back')">ParkifyCard hinzufügen</div>    
+                </form>
+            {% elif userData.parkKarteVorhanden == True %}
+                <h3 style="font-size: 1.25rem; font-weight: 600;"><strong>kSuper!</strong> 🥳 Deine ParkifyCard ist aktiv ✅</h3>
+                <p>Keine Lust mehr drauf? 😔</p>
+                <p>Dann entferne deine ParkifyCard über die untere Schaltfläche!</p>
+                <form action="#" id="changeParkCardToFalse" class="middleForm">
+                    <input type="hidden" name="parkKarte" id="parkKarte" value="0">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeParkCard', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonDeleteCard" onclick="changeContainerSlow('ContainerFormChangeParkCard', 'welcomeContainer', 'changeParkCardToFalse', 'back')">ParkifyCard entfernen</div>    
+                </form>
+            {% endif %}
+            </div>
+            <div id="ContainerFormChangeCars" class="Cont">
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Deine <strong>Fahrzeuge</strong></h3>
+                <p>Neues Kennzeichen? Lieber einen anderen Avatar? Hier kannst du deine Fahrzeuge bearbeiten 🚙 ✍️</p>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px; text-align: left;" onclick="displayForm('changeCarAvatar')">Avatar ändern</h3>
+                <form action="#" id="changeCarAvatar" class="middleForm" style="display: none;">
+                    <h4 style="text-align: left;">Wähle dein Auto aus:</h4>
+                    <div style="display: flex; justify-content: center;overflow-x: auto;scroll-snap-type: x mandatory;gap: 1rem;scroll-behavior: smooth;width: 100%;max-width: 500px;padding: 0;margin: 25px auto;">
+                    {% for car in fahrzeuge %}
+                        <div id="selection" style="height: 130px; padding: 10px; background-color: lightgray; border-radius: 20px; width: 150px;">
+                            <input type="radio" style="height: 60px; margin-top: auto; margin-bottom: auto; float: left;" id="car1" name="carSelection" value="{{ car.Kennzeichen }}">
+                            <img id="carImgSelection" class="currentCars" src="{{ car.Avatar.frontView }}" alt="">
+                            <label style="display: flex; justify-content: center; margin: 5px;" for="car1"><span id="country">{{ car.Landerkennung }}</span><span id="platenumber">{{ car.Kennzeichen }}</span></label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <h4 style="text-align: left;">Wähle deinen neuen Avatar aus:</h4>
+                    <div id="avatarContainer" style="display: flex; justify-content: center;">
+                        {% for avatar in avatarsToChoose %}
+                        <div id="selection" style="float: left; margin: 5px 5px 20px 5px; background-color: whitesmoke; padding: 10px; border-radius: 10px;">
+                            <input type="radio" id="avatars" name="neuerAvatar" value="{{ avatar.name }}">
+                            <img id="carImgSelection" class="carAvatars" src="{{ avatar.frontView }}" alt="">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeCars', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormChangeCars', 'welcomeContainer', 'changeCarAvatar', 'back')">➔</div>    
+                </form>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px; text-align: left;" onclick="displayForm('changePlateNumber')">Kennzeichen ändern</h3>
+                <form action="#" id="changePlateNumber" class="middleForm" style="display: none;">
+                    <h4 style="text-align: left;">Wähle dein Auto aus:</h4>
+                    <div style="display: flex; justify-content: center;overflow-x: auto;scroll-snap-type: x mandatory;gap: 1rem;scroll-behavior: smooth;width: 100%;max-width: 500px;padding: 0;margin: 0 auto;">
+                    {% for car in fahrzeuge %}
+                        <div id="selection" style="height: 130px; padding: 10px; background-color: lightgray; border-radius: 20px; width: 150px;">
+                            <input type="radio" style="height: 60px; margin-top: auto; margin-bottom: auto; float: left;" id="car1" name="carSelectionForPlateSwap" value="{{ car.Kennzeichen }}">
+                            <img id="carImgSelection" class="currentCars" src="{{ car.Avatar.frontView }}" alt="">
+                            <label style="display: flex; justify-content: center; margin: 5px;" for="car1"><span id="country">{{ car.Landerkennung }}</span><span id="platenumber">{{ car.Kennzeichen }}</span></label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <input type="text" name="changedPlate" id="changedPlate" style="margin-top: 20px;" placeholder="Dein neues Kennzeichen">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeCars', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormChangeCars', 'welcomeContainer', 'changePlateNumber', 'back')">➔</div>
+                </form>
+                <h3 style="font-size: 1.25rem; font-weight: 600; cursor: pointer; border-bottom: 1px solid lightgray; padding-bottom: 5px; text-align: left;" onclick="displayForm('deleteCar')">Fahrzeug löschen</h3>
+                <form action="#" id="deleteCar" class="middleForm" style="display: none;">
+                    <h4 style="text-align: left;">Wähle das Fahrzeug aus, das du entfernen möchtest:</h4>
+                    <div style="display: flex; justify-content: center;overflow-x: auto;scroll-snap-type: x mandatory;gap: 1rem;scroll-behavior: smooth;width: 100%;max-width: 500px;padding: 0;margin: 25px auto;">
+                    {% for car in fahrzeuge %}
+                        <div id="selection" style="height: 130px; padding: 10px; background-color: lightgray; border-radius: 20px; width: 150px;">
+                            <input type="radio" style="height: 60px; margin-top: auto; margin-bottom: auto; float: left;" id="car1" name="carSelectionForDeleting" value="{{ car.Kennzeichen }}">
+                            <img id="carImgSelection" class="currentCars" src="{{ car.Avatar.frontView }}" alt="">
+                            <label style="display: flex; justify-content: center; margin: 5px;" for="car1"><span id="country">{{ car.Landerkennung }}</span><span id="platenumber">{{ car.Kennzeichen }}</span></label>
+                        </div>
+                    {% endfor %}
+                    </div>
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormChangeCars', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonDeleteCard" onclick="changeContainerSlow('ContainerFormChangeCars', 'welcomeContainer', 'deleteCar', 'back')">entfernen</div>
+                </form>
+
+                <div id="buttonPreviousCarChange" onclick="changeContainer('ContainerFormChangeCars', 'welcomeContainer', 'back')">➔</div>
+            </div>
+            <div id="ContainerFormAddCars" class="Cont">
+                <h3 style="font-size: 1.25rem; font-weight: 600;">Neues Fahrzeug hinzufügen 🆕🚙</h3>
+                <p>Du möchtest deinen Fuhrpark erweitern? Kein Problem! Gib dein Kennzeichen ein, wähle deinen Avatar aus und los gehts 😄</p>
+                <form action="#" id="addCar" class="middleForm">
+                    <h4 style="text-align: left;">Wähle das Land aus und trage dein Kennzeichen ein:</h4>
+                    <div style="display: flex; justify-content: center;">
+                        <select id="addCountry" name="neuesCountry" onchange="countryPlateUpdate()" style="height: 30px; margin-top: auto; margin-bottom: auto; margin-right: 15px;">
+                            <option value="D" selected>Deutschland</option>
+                            <option value="A">Österreich</option>
+                            <option value="F">Frankreich</option>
+                            <option value="HR">Kroatien</option>
+                            <option value="H">Ungarn</option>
+                            <option value="I">Italien</option>
+                            <option value="B">Belgien</option>
+                            <option value="S">Schweden</option>
+                            <option value="L">Luxemburg</option>
+                            <option value="E">Spanien</option>
+                            <option value="N">Norwegen</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="TR">Türkei</option>
+                        </select>
+                        <div id="addPlatenumber">
+                            <div id="blue">D</div>
+                            <input type="text" name="neuesKennzeichen" id="numberplate" placeholder="XXAB123">
+                        </div>
+                    </div>
+                    <h4 style="text-align: left;">Wähle deinen Avatar aus:</h4>
+                    <div id="avatarContainer" style="display: flex; justify-content: center;">
+                        {% for avatar in avatarsToChoose %}
+                        <div id="selection" style="float: left; margin: 5px 5px 20px 5px; background-color: whitesmoke; padding: 10px; border-radius: 10px;">
+                            <input type="radio" id="avatars" name="newAvatarForAddingCar" value="{{ avatar.name }}">
+                            <img id="carImgSelection" class="carAvatars" src="{{ avatar.frontView }}" alt="">
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="changeContainer('ContainerFormAddCars', 'welcomeContainer', 'back')">➔</div>    
+                    <div id="buttonNext" onclick="changeContainerSlow('ContainerFormAddCars', 'welcomeContainer', 'addCar', 'back')">➔</div>    
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+
+</body>
+</html>

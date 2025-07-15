@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dein Parkverlauf</title>
+    <link rel="icon" type="image/x-icon" href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        #Schriftzug {
+            width: 150px;
+            margin: -25px 0 -40px -15px;
+            background-color: #d3d3d3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .Cont {
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateX(100%);
+            display: none;
+        }
+
+        .Cont.exit-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .Cont.exit-right {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .Cont.active {
+            display: block;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .desktop {
+            padding: 5px;
+            background-color: lightgreen;
+            border: 2px solid green;
+            border-radius: 21px;
+            color: green;
+        }
+
+        .menu-button {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav a {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #374151;
+            font-size: 30px;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu a {
+            padding: 0.5rem 0;
+        }
+
+        main {/*
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;*/
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            margin-bottom: 0;
+            /*border-radius: 0.5rem;*/
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+        }
+
+        .section.blue {
+            padding: 0;
+            background-color: #dbeafe;
+            position: absolute;
+            display: grid;
+            justify-content: center;
+        }
+
+        #itemContainer, #picContainer {
+            width: 100%;
+            min-width: 425px;
+            height: fit-content;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #item {
+            display: block;
+            text-align: center;
+            width: 30%;
+            float: left;
+            margin: 1.5%;
+            max-width: 150px;
+        }
+
+        #item-symbol {
+            font-size: 70px;
+        }
+
+        #item-value {
+            padding: 2px;
+            min-height: 70px;
+            background-color: lightgray;
+            border-radius: 10px;
+        }
+
+        #picContainer {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1rem;
+            scroll-behavior: smooth;
+            width: 100%; /* Nutze volle Breite */
+            max-width: 500px;
+            padding: 0;
+            margin: 0 auto; /* zentriert den Container */
+        }
+
+        .chooseCar {
+            cursor: pointer;
+            flex: 0 0 auto;
+            width: 200px;
+            background-color: whitesmoke;
+            border-radius: 25px;
+            padding: 15px;
+            scroll-snap-align: start;
+        }
+
+        .Kennzeichen {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+        }
+        
+        img {
+            width: 100%;
+            scroll-snap-align: center;
+        }
+        .country {
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px 0 0 5px;
+            float: left;
+        }
+
+        .platenumber {
+            padding: 5px;
+            background-color: white;
+            color: black;
+            border-radius: 0 5px 5px 0;
+            float: left;
+        }
+
+        p {
+            margin: 5px;
+        }
+
+        .shown {
+            display: block;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #buttonNext, #buttonPrevious, #buttonSubmit {
+            cursor: pointer;
+            bottom: 0px;
+            float: right;
+            background-color: lightgreen;
+            border: 2px solid green;
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        #buttonPrevious {
+            float: left;
+            rotate: 180deg;
+            background-color: lightgray;
+            border: 2px solid gray;
+        }
+
+        #buttonSubmit {
+            background-color: #dbeafe;
+            border: 2px solid lightskyblue;
+            width: fit-content;
+            color: yellow;
+            font-size: 20px;
+            padding: 0 15px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        
+        #buttonUp, #buttonDown {
+            cursor: pointer;
+            width: 50%;
+            max-width: 250px;
+            height: 50px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0px 10px 5px gray;
+            background-color: #dbeafe;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            padding-top: 15px;
+
+        }
+
+        .line1, .line2, .bottomLine {
+            padding: 4px 10px;
+            border-radius: 15px;
+        }
+
+        .line1 {
+            background-color: white;
+        }
+
+        .line2 {
+            background-color: whitesmoke;
+        }
+
+        .bottomLine {
+            background-color: lightgreen;
+        }
+
+        .Historie {
+            margin-bottom: 20px;
+            border: 2px solid lightgray;
+            box-shadow: 0 5px 5px gray;
+            padding: 5px;
+            border-radius: 20px;
+        }
+
+        #headTitles, #userRow {
+            background-color: whitesmoke;
+            display: inline-flex;
+            height: fit-content;
+            border-radius: 10px;
+        }
+
+        #userRow {
+            background-color: transparent;
+        }
+
+        #userContainer {
+            display: block;
+            text-align: center;
+            top: 70px;
+            position: absolute;
+            width: 100%;
+            overflow: scroll;
+            height: 450px;
+        }
+
+        .headingTitle, .userValue {
+            padding: 5px;
+            width: 50px;
+            border-radius: 5px;
+            border: 2px solid lightgray;
+            width: 150px;
+        }
+
+        .userValue {
+            background-color: white;
+            color: black;
+        }
+
+
+
+
+        @media (max-width: 768px) {
+            /*
+            .menu-button {
+                display: block;
+            }
+
+            nav.desktop {
+                display: none;
+            }
+
+            .mobile-menu.show {
+                display: flex;
+            }*/
+
+            #Schriftzug {
+                margin-left: -32px;
+            }
+            #picContainer {
+                margin-top: -17.5%;
+            }
+        }
+    </style>
+    <script>
+        function showDetails(carToShow) {
+            const carContainers = document.querySelectorAll(".carContainer");
+            carContainers.forEach(container => {
+                container.classList.add('hidden');
+                container.classList.remove('shown');
+            });
+
+            const showCar = document.getElementById(carToShow);
+            if (showCar) {
+                showCar.classList.remove("hidden");
+                showCar.classList.add("shown");
+            }
+
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav">
+            <img id="Schriftzug" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Schriftzug.png" alt="Parkify-Logo">
+            <button id="menu-toggle" class="menu-button">☰</button>
+            <nav class="desktop">
+                <p>Administrator Ansicht 😇</p>
+            </nav>
+        </div>        
+    </header>
+
+    <main>
+        <!-- Oberer Bereich -->
+        <section class="section blue" style="height: 60%;">
+            <h3>👤 User-Übersicht</h3>
+            <div id="userContainer">
+                <div id="headTitles">
+                    <p class="headingTitle">Username</p>
+                    <p class="headingTitle">Letzter Login</p>
+                    <p class="headingTitle">Gesamtbetrag</p>
+                </div>
+                {% for user in alleUser %}
+                <div id="userRow">
+                    <p class="userValue">user.username</p>
+                    <p class="userValue">user.lastLogin</p>
+                    <p class="userValue">Gesamtbetrag</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- Unterer Bereich -->
+        <section class="section" style="bottom: 0px; height: 40%;">
+        </section>
+    </main>
+
+
+</body>
+</html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park it simple!</title>
+    <link rel="icon" type="image/x-icon" href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+        }
+
+        #Schriftzug {
+            width: 150px;
+            margin: -25px 0 -40px -15px;
+            background-color: #d3d3d3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .Cont {
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateX(100%);
+            display: none;
+        }
+
+        .Cont.exit-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .Cont.exit-right {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .Cont.active {
+            display: block;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-button {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav a, #kompass {
+            margin-left: 1rem;
+            text-decoration: none;
+            color: #374151;
+            font-size: 30px;
+        }
+
+        nav a:hover, #kompass {
+            color: #3b82f6;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu a, #kompass {
+            padding: 0.5rem 0;
+        }
+
+        main {/*
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;*/
+        }
+
+        .section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            margin-bottom: 0;
+            /*border-radius: 0.5rem;*/
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+        }
+
+        .section.blue {
+            background-color: #dbeafe;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+        }
+
+        #Parkplatz {
+            background-color: lightgray;
+            box-shadow: 0px 10px 5px gray;
+            width: 30%;
+            border-radius: 20px;
+            height: 60%;
+            min-width: 350px;
+            max-width: 400px;
+            max-height: 270px;
+        }
+
+        .parkplatzBelegt {
+            background-color: darkgray;
+            border: 2px solid lightcoral;
+        }
+
+        #Parklogo {
+            position: absolute;
+            width: 150px;
+        }
+
+        #ParkflaecheLinks, #ParkflaecheRechts {
+            display: flex;
+            justify-content: center;
+            width: 49.25%;
+            padding: 10%;
+            height: 100%;
+            cursor: pointer;
+            float: left;
+        }
+        
+        #Parkplatzmarkierung {
+            display: flex;
+            justify-content: center;
+            width: 6%;
+            background-color: white;
+            border: none;
+            padding: 0;
+            height: 100%;
+            float: left;
+
+        }
+        
+        #ParkflaecheRechts {
+            border: none;
+        }
+
+        #topView {
+        width: 100px;
+        z-index: 1000;
+        position: absolute;
+        margin-top: -25px;
+        }
+
+        #Wertanzeige {
+            display: flex;
+            justify-content: center;
+        }
+
+        #carSelection {
+            display: block;
+            overflow: scroll;
+            max-height: 200px;
+        }
+
+        #buttonNext, #buttonPrevious, #buttonSubmit {
+            cursor: pointer;
+            bottom: 0px;
+            float: right;
+            background-color: lightgreen;
+            border: 2px solid green;
+            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+            padding-top: 5px;
+        }
+
+        #buttonPrevious {
+            float: left;
+            rotate: 180deg;
+            background-color: lightgray;
+            border: 2px solid gray;
+        }
+
+        #buttonSubmit {
+            background-color: #dbeafe;
+            border: 2px solid lightskyblue;
+            width: fit-content;
+            color: yellow;
+            font-size: 20px;
+            padding: 0 15px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        
+        #buttonUp, #buttonDown {
+            cursor: pointer;
+            width: 50%;
+            max-width: 250px;
+            height: 50px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0px 10px 5px gray;
+            background-color: #dbeafe;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            padding-top: 15px;
+
+        }
+
+        #selection {
+            display: flex;
+            padding: 2px;
+            background-color: #d3d3d3;
+            border-radius: 20px;
+            width: 250px;
+            margin: 5px auto 5px auto;
+        }
+
+        label {
+            height: 20px;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-right: 3px;
+        }
+
+        #carImgSelection {
+            width: 90px;
+            margin: 0 3px 0 3px;
+        }
+
+
+        #country {
+            padding: 5px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #platenumber {
+            padding: 5px;
+            background-color: white;
+            color: black;
+            border-radius: 0 5px 5px 0;
+        }
+
+        #activeParking {
+            cursor: pointer;
+            color: black;
+            text-decoration: none;
+            padding: 5px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid lightgray;
+        }
+
+        #map {
+            width: 100%;
+        }
+
+        #streetmapContainer {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            transform: translateY(100%);
+            opacity: 0;
+            z-index: 10;
+        }
+
+        #streetmapContainer.visible {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 85%;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #streetmapContainer.hidden {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 85%;
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+
+        @media (max-width: 768px) {
+            /*
+            .menu-button {
+                display: block;
+            }
+
+            nav.desktop {
+                display: none;
+            }
+
+            .mobile-menu.show {
+                display: flex;
+            }*/
+
+            #Schriftzug {
+                margin-left: -32px;
+            }
+
+            #streetmapContainer.visible {
+                height: 90%;
+            }
+        }
+
+
+        @keyframes einfliegen {
+        0% {
+            transform: translateY(70%);
+            opacity: 0;
+        }
+        70% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+    }
+
+    .fly-in {
+        animation: einfliegen 2s ease-out forwards;
+    }
+
+    .fly-out {
+        animation: einfliegen 2s ease-out backwards;
+    }
+
+    </style>
+
+    <script>
+    function topViewAnzeigen(welcheParkflaeche, andereParkflaeche) {
+        const img = document.getElementById(welcheParkflaeche);
+        const anderesImg = document.getElementById(andereParkflaeche);
+
+        if (anderesImg.style.display === "block") {
+            anderesImg.style.display = "none"
+            img.style.display = "block";
+            img.classList.add("fly-in");
+        } else {
+            img.style.display = "block";
+            img.classList.add("fly-in");
+        }
+    }
+
+    function parkplatzWaehlen(welcheParkflaeche, andereParkflaeche) {
+        const Pcurrent = document.getElementById(welcheParkflaeche);
+        const Pnext = document.getElementById(andereParkflaeche);
+        const pasteToForm = document.getElementById("P");
+        const pasteToOverview = document.getElementById("value1");
+
+        if (Pnext.style.border === "5px solid lightgreen") {
+            Pnext.style.border = "none"
+            Pcurrent.style.border = "5px solid lightgreen";
+        } else if (Pcurrent.style.border === "5px solid lightgreen") {
+            Pcurrent.style.border = "none";
+        } else {
+            Pcurrent.style.border = "5px solid lightgreen";
+        }
+
+        if (Pcurrent.id === "ParkflaecheLinks") {
+            pasteToForm.value = "1";
+            pasteToOverview.innerText = "1";
+        } else if (Pcurrent.id === "ParkflaecheRechts") {
+            pasteToForm.value = "2";
+            pasteToOverview.innerText = "2";
+        }
+    }
+
+    function countUp() {
+        const aktuelleZahl = document.getElementById("Wert");
+        const pasteInForm = document.getElementById("Parkdauer");
+        const pasteInOverview = document.getElementById("value2");
+        const pricePerMinute = 0.025
+        const pastePriceInForm = document.getElementById("Parkpreis");
+        const pastePriceInOverview = document.getElementById("value4");
+
+        let wert = parseInt(aktuelleZahl.innerText, 10);
+        wert += 5;
+        aktuelleZahl.innerText=wert;
+        pasteInForm.value = wert;
+        pasteInOverview.innerText = wert;
+
+        pastePriceInForm.value = wert * pricePerMinute;
+        pastePriceInOverview.innerText = wert * pricePerMinute;
+    }
+
+    function countDown() {
+        const aktuelleZahl = document.getElementById("Wert");
+        const pasteForm = document.getElementById("Parkdauer");
+        const pasteOverview = document.getElementById("value2");
+        const pricePerMinute = {{ Preis }};
+        const pastePriceToForm = document.getElementById("Parkpreis");
+        const pastePriceToOverview = document.getElementById("value4");
+
+        let wert = parseInt(aktuelleZahl.innerText, 10);
+        if (wert > 0) {
+            wert -= 5;
+            aktuelleZahl.innerText=wert;
+            pasteForm.value = wert;
+            pasteOverview.innerText = wert;
+
+            pastePriceToForm.value = wert * pricePerMinute;
+            pastePriceToOverview.innerText = wert * pricePerMinute;
+        } 
+    }
+
+    function prevContainer(currentId, previousId, direction) {
+        const current = document.getElementById(currentId);
+        const next = document.getElementById(previousId);
+
+        if (direction === 'next') {
+            current.classList.add("exit-left");
+        } else if (direction === 'back') {
+            current.classList.add("exit-right");
+        }
+
+        next.style.display = "block";
+
+        setTimeout(() => {
+            current.classList.remove("active", "exit-left", "exit-right");
+            current.style.display = "none";
+            next.classList.add("active");
+        }, 50);
+    }
+
+    function nextContainer(current, next) {
+        const cur = document.getElementById(current);
+        const nex = document.getElementById(next);
+
+        cur.style.display = "none";
+        nex.style.display = "block";
+    }
+
+
+    function sendValueToOverview(currentCar) {
+        const myValue = document.getElementById(currentCar);
+        const pasteValueTo = document.getElementById("value3");
+
+        pasteValueTo.innerText = myValue.value;
+    }
+
+    function mapToggle() {
+        const mainContainerElement = document.getElementById("mainContainer");
+        const mapContainerElement = document.getElementById("streetmapContainer");
+
+        const isMapVisible = mapContainerElement.classList.contains("visible");
+
+        if (isMapVisible) {
+            mapContainerElement.classList.remove("visible");
+            mapContainerElement.classList.add("hidden");
+            /*mainContainerElement.style.display = "block";*/
+        } else {
+            /*mainContainerElement.style.display = "none";*/
+            mapContainerElement.classList.remove("hidden");
+            mapContainerElement.classList.add("visible");
+        }
+    }
+    
+
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav">
+            <img id="Schriftzug" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Schriftzug.png" alt="Parkify-Logo">
+            <button id="menu-toggle" class="menu-button">☰</button>
+            <nav class="desktop">
+                <a style="cursor: pointer;" onclick="mapToggle(), getRoute(end)">🧭</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/Home?accname={{ accname }}&pwd={{ pwd }}">🏠</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/History?accname={{ accname }}&pwd={{ pwd }}">📊</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/Settings?accname={{ accname }}&pwd={{ pwd }}">⚙️</a>
+                <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/LogIn.html">🚪</a>
+            </nav>
+        </div>
+        <!-- Mobile Menü -->
+        
+    </header>
+
+    <main id="mainContainer" style="display: block;">
+        <!-- Oberer Bereich -->
+        <section class="section blue" style="height: 60%;">
+            <div id="Parkplatz">
+                {% if ParkplatzOne == False %}
+                <div id="ParkflaecheLinks" style="border-radius: 20px 0 0 20px;" onclick="parkplatzWaehlen('ParkflaecheLinks', 'ParkflaecheRechts')">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="">
+                    <p style="position:absolute; font-weight: bold; color: white;">Parkplatz 1</p>
+                    <img id="topViewLeft" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% elif ParkplatzOne == True %}
+                <div id="ParkflaecheLinks" class="parkplatzBelegt" style="border-radius: 20px 0 0 20px; cursor: default; border: 2px solid lightcoral;">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="" style="opacity: 0.5;">
+                    <p style="position:absolute; font-weight: bold; color: red;">BELEGT</p>
+                    <img id="topViewLeft" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% elif ParkplatzOne == None %}
+                <div id="ParkflaecheLinks" class="parkplatzBelegt" style="border-radius: 20px 0 0 20px; border: 2px solid yellowgreen;" onclick="parkplatzWaehlen('ParkflaecheLinks', 'ParkflaecheRechts')">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="" style="opacity: 0.5;">
+                    <p style="position:absolute; font-weight: bold; color: yellowgreen;">Parkplatz 1</p>
+                    <p style="position:absolute; font-weight: bold; color: white; margin-top: 120px;">Bist du das? 😇</p>
+                    <img id="topViewLeft" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% endif %}
+                <div id="Parkplatzmarkierung" style="background-color: white; width: 5px;"></div>
+                {% if ParkplatzTwo == False %}
+                <div id="ParkflaecheRechts" style="border-radius: 0 20px 20px 0;" onclick="parkplatzWaehlen('ParkflaecheRechts', 'ParkflaecheLinks')">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="">
+                    <p style="position:absolute; font-weight: bold; color: white;">Parkplatz 2</p>
+                    <img id="topViewRight" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% elif ParkplatzTwo == True %}
+                <div id="ParkflaecheRechts" class="parkplatzBelegt" style="border-radius: 0 20px 20px 0; cursor: default; border: 2px solid lightcoral;">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="" style="opacity: 0.5;">
+                    <p style="position:absolute; font-weight: bold; color: red;">BELEGT</p>
+                    <img id="topViewLeft" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% elif ParkplatzTwo == None %}
+                <div id="ParkflaecheRechts" class="parkplatzBelegt" style="border-radius: 0 20px 20px 0; border: 2px solid yellowgreen;" onclick="parkplatzWaehlen('ParkflaecheRechts', 'ParkflaecheLinks')">
+                    <img id="Parklogo" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png" alt="" style="opacity: 0.5;">
+                    <p style="position:absolute; font-weight: bold; color: yellowgreen;">Parkplatz 1</p>
+                    <p style="position:absolute; font-weight: bold; color: white; margin-top: 120px;">Bist du das? 😇</p>
+                    <img id="topViewLeft" style="display: none;" src="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView.png" alt="">
+                </div>
+                {% endif %}
+            </div>
+        </section>
+        <!-- Unterer Bereich -->
+        <section class="section" style="bottom: 0px; height: 50%;">
+            {% if AktiveParkvorgaenge > 0 %}
+            <a href="http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]:8000/Parkify/History?accname={{ accname }}&pwd={{ pwd }}" style="text-decoration: none;">
+                <div id="activeParking">
+                    <div id="activeLabel">Aktive Parkvorgänge: <strong id="activeNumber">{{ AktiveParkvorgaenge }}</strong></div>
+                </div>
+            </a>
+            {% endif %}
+            <form action="#">
+                <div id="welcomeContainer" class="Cont active">
+                    <h3 style="font-size: 1.25rem; font-weight: 600;">Hallo <strong>{{ Username }}</strong> 👋</h3>
+                    <p>Wähle oben einen freien Parkplatz aus, auf dem du parken möchtest 🚙</p>
+                    {% if ParkplatzTwo == None or ParkplatzOne == None %}
+                    <p style="font-style: italic;">Du stehst schon auf deinem Wunschparkplatz? Super, wir haben dich bereits erkannt! Bitte bestätige oben noch einmal dass du es bist 😇</p>
+                    {% endif %}
+                    <input type="hidden" name="P" id="P" value="">
+                    <div id="buttonNext" onclick="prevContainer('welcomeContainer', 'dataContainer', 'next')">➔</div>    
+                </div>
+                <div id="dataContainer" class="Cont">
+                    <h3 style="font-size: 1.25rem; font-weight: 600;">Wie lange möchtest du bleiben? ⏱️</h3>
+                    <div style="display: block; text-align: center; margin-top: 50px;">
+                        <div id="buttonUp" onclick="countUp()">⬆️</div>
+                        <div id="Wertanzeige">
+                            <p><strong id="Wert">0</strong></p>
+                            <p style="margin-left: 5px;">Minuten</p>
+                        </div>
+                        <div id="buttonDown" onclick="countDown()">⬇️</div>    
+                    </div>
+                    <input type="hidden" name="Parkdauer" id="Parkdauer" value="">
+                    <div id="buttonPrevious" onclick="prevContainer('dataContainer', 'welcomeContainer', 'back')">➔</div>
+                    <div id="buttonNext" onclick="prevContainer('dataContainer', 'chooseCarContainer', 'next')">➔</div>
+                </div>
+                <div id="chooseCarContainer" class="Cont">
+                    <h3 style="font-size: 1.25rem; font-weight: 600;">Welches Auto möchtest du Parken? 🅿️</h3>
+                    <p>Wähle eines deiner angelegten Autos aus 🚙</p>
+                    <div id="carSelection">
+                        {% for car in fahrzeuge %}
+                        <div id="selection">
+                            <input type="radio" id="car1" name="carSelection" value="{{ car.Kennzeichen }}" onclick="sendValueToOverview('car1')">
+                            <img id="carImgSelection" src="{{ car.Avatar.frontView }}" alt="">
+                            <label for="car1"><span id="country">{{ car.Landerkennung }}</span><span id="platenumber">{{ car.Kennzeichen }}</span></label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div id="buttonPrevious" onclick="prevContainer('chooseCarContainer', 'dataContainer', 'back')">➔</div>
+                    <div id="buttonNext" onclick="prevContainer('chooseCarContainer', 'submitContainer', 'next')">➔</div>    
+                </div>
+                <div id="submitContainer" class="Cont">
+                    <h3 style="font-size: 1.25rem; font-weight: 600;">Passt alles? 🏁</h3>
+                    <p>Möchtest du den Parkvorgang mit folgenden Daten starten? 🤔</p>
+                    <p>Parkplatz: <strong id="value1"></strong></p>
+                    <p>Dauer: <strong id="value2"></strong> Minuten</p>
+                    <p>Fahrzeug: <strong id="value3"></strong></p>
+                    <p>Preis: <strong id="value4"></strong>€</p>
+                    <input type="hidden" name="Parkpreis" id="Parkpreis" value="">
+                    <input type="hidden" name="accname" id="accname" value="{{ accname }}">
+                    <input type="hidden" name="pwd" id="pwd" value="{{ pwd }}">
+                    <div id="buttonPrevious" onclick="prevContainer('submitContainer', 'chooseCarContainer', 'back')">➔</div>
+                    <button type="submit" id="buttonSubmit">Parken!</button>    
+                </div>
+            </form>
+        </section>
+    </main>
+    <div id="streetmapContainer" class="hidden">
+        <section class="section blue" id="map" style="height: 100%;">
+            <script>
+                let longitude = null;
+                let latitude = null; 
+
+                fetch("http://ip-api.com/json")
+                    .then(response => response.json())
+                    .then(data => {
+                        longitude = data.lon;
+                        latitude = data.lat;
+                        console.log("Ungefähre Position:", latitude, longitude, data.city);
+                                        
+                        mapboxgl.accessToken = 'pk.eyJ1IjoiZGwxIiwiYSI6ImNtYXhybHJmMTAxOWYyaXNjdThjY2xnaG4ifQ.TGmQnQZDGvplIbcxhwXIQg';
+                        const map = new mapboxgl.Map({
+                            container: 'map', // container ID
+                            center: [9.189798517374276, 48.886162580603056], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+                            zoom: 10 // starting zoom
+                        });
+
+                        const lubu = [9.169787469889153, 48.89204836106992]
+                        const customMarker = document.createElement("img");
+                        customMarker.src = "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/Parkify.png";
+                        customMarker.style.width = "70px";
+                        customMarker.style.height = "90px";
+                        
+                        new mapboxgl.Marker({ element: customMarker })
+                        .setLngLat(lubu)
+                        .addTo(map);
+
+                        const currentUserPosition = [longitude, latitude]
+                            new mapboxgl.Marker({ color: 'blue'})
+                            .setLngLat(currentUserPosition)
+                            .addTo(map);
+                        
+                        getRoute(lubu, currentUserPosition, map);
+
+                    });
+
+                
+
+                // create a function to make a directions request and update the destination
+                async function getRoute(end, start, map) {
+                // make a directions request using cycling profile
+                    const query = await fetch(
+                    `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`
+                    );
+                    const json = await query.json();
+                    const data = json.routes[0];
+                    const route = data.geometry;
+                    const geojson = {
+                        'type': 'Feature',
+                        'properties': {},
+                        'geometry': data.geometry
+                    };
+                    
+                    if (map.getSource('route')) {
+                        // if the route already exists on the map, reset it using setData
+                        map.getSource('route').setData(geojson);
+                    }
+
+                    // otherwise, add a new layer using this data
+                    else {
+                        map.addLayer({
+                        id: 'route',
+                        type: 'line',
+                        source: {
+                            type: 'geojson',
+                            data: geojson
+                        },
+                        layout: {
+                            'line-join': 'round',
+                            'line-cap': 'round'
+                        },
+                        paint: {
+                            'line-color': '#3887be',
+                            'line-width': 5,
+                            'line-opacity': 0.75,
+                            'z-index': 100
+                        }
+                        });
+                    }
+                }
+            </script>
+        </section>
+    </div>
+
+</body>
+</html>

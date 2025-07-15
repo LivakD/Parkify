@@ -1,0 +1,34 @@
+{
+    "username": "Tiziana",
+    "pwd": "t",
+    "email": "t@t",
+    "status": "normal",
+    "letzterLogIn": "10.05.2025, 15:11",
+    "anzahlMahnungen": 0,
+    "anzahlAbschleppungen": 0,
+    "ParkkarteVorhanden": false,
+    "gesperrt": false,
+    "fahrzeuge": [
+        {
+            "Landerkennung": "UA",
+            "Kennzeichen": "BBL217",
+            "Avatar": {
+                "name": "Speed",
+                "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView2.png",
+                "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView2.png"
+            },
+            "Parkhistorie": [
+                {
+                    "Datum": "10.05.2025, 15:10",
+                    "Stadt": "Ludwigsburg",
+                    "Parkraum": "Urban Harbour",
+                    "Parkplatz": "1",
+                    "GebuchteDauer": 20.0,
+                    "Start": "15:10:37",
+                    "Ende": "15:10:47",
+                    "GesamtpreisInEuro": 0.0
+                }
+            ]
+        }
+    ]
+}

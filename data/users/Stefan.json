@@ -1,0 +1,44 @@
+{
+   "username": "Stefan",
+   "pwd": "Panther2012!",
+   "email": "Stefan.Fiegl@gmx.de",
+   "status": "normal",
+   "letzterLogIn": "04.07.2025, 14:49",
+   "anzahlMahnungen": 0,
+   "anzahlAbschleppungen": 0,
+   "ParkkarteVorhanden": true,
+   "gesperrt": false,
+   "fahrzeuge": [
+      {
+         "Landerkennung": "D",
+         "Kennzeichen": "AB 123456",
+         "Avatar": {
+            "name": "Limousine",
+            "topView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/topView4.png",
+            "frontView": "http://[2001:7c0:2320:2:f816:3eff:fe82:34b2]/Parkify/WebPics/frontView4.png"
+         },
+         "Parkhistorie": [
+            {
+               "Datum": "04.07.2025, 14:44",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "1",
+               "GebuchteDauer": 30.0,
+               "Start": "14:44:56",
+               "Ende": "14:44:57",
+               "GesamtpreisInEuro": 0.0
+            },
+            {
+               "Datum": "04.07.2025, 14:49",
+               "Stadt": "Ludwigsburg",
+               "Parkraum": "Urban Harbour",
+               "Parkplatz": "2",
+               "GebuchteDauer": 5.0,
+               "Start": "14:49:14",
+               "Ende": "14:49:49",
+               "GesamtpreisInEuro": 0.01
+            }
+         ]
+      }
+   ]
+}

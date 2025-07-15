@@ -1,0 +1,726 @@
+{
+   "Stadt": "Ludwigsburg",
+   "Parkraum": "Urban Harbour",
+   "KontaktAbschleppunternehmen": "abschlepper@lb.de",
+   "ParkPreisProMinute": 0.025,
+   "HoechstparkdauerInH": 6,
+   "ToleranzInProzent": 15,
+   "Parkplaetze": [
+      {
+         "name": "Parkplatz 1",
+         "parkscreeningAktiv": true,
+         "belegt": false,
+         "Parkverlauf": [
+            {
+               "Datum": "2025-05-05",
+               "Kennzeichen": "BBLL1204",
+               "Start": "13:48:09",
+               "Ende": "13:48:0920"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:13:24",
+               "Ende": "15:13:44"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max.mustermann@example.com",
+               "Start": "15:25:45",
+               "Ende": "15:26:05"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "MAX",
+               "Start": "15:47:32",
+               "Ende": "15:47:55"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:48:20",
+               "Ende": "15:48:52"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "MAX",
+               "Start": "16:02:45",
+               "Ende": "16:02:56"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max",
+               "Start": "16:19:34",
+               "Ende": "16:20:37"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "max",
+               "Start": "09:56:51",
+               "Ende": "09:59:38"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:00:39",
+               "Ende": "10:01:10"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:20:54",
+               "Ende": "10:21:19"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:21:29",
+               "Ende": "10:21:48"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:23:51",
+               "Ende": "10:24:05"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:24:30",
+               "Ende": "10:24:43"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:25:11",
+               "Ende": "10:25:19"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:27:27",
+               "Ende": "10:27:46"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:28:02",
+               "Ende": "10:33:35"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:41:29",
+               "Ende": "10:42:13"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:42:23",
+               "Ende": "10:42:34"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:44:11",
+               "Ende": "10:44:38"
+            },
+            {
+               "Datum": "01.07.2025, 15:20",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:20:15",
+               "Ende": "15:25:15"
+            },
+            {
+               "Datum": "01.07.2025, 15:22",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:22:06",
+               "Ende": "15:37:06"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:45:51",
+               "Ende": "15:46:21"
+            },
+            {
+               "Datum": "01.07.2025, 16:03",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:03:55",
+               "Ende": "16:18:55"
+            },
+            {
+               "Datum": "01.07.2025, 16:06",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:06:02",
+               "Ende": "16:11:02"
+            },
+            {
+               "Datum": "01.07.2025, 16:11",
+               "Kennzeichen": "BBLL4321",
+               "Start": "16:11:16",
+               "Ende": "16:16:16"
+            },
+            {
+               "Datum": "01.07.2025, 16:21",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:21:47",
+               "Ende": "16:36:47"
+            },
+            {
+               "Datum": "01.07.2025, 16:25",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:25:24",
+               "Ende": "16:30:24"
+            },
+            {
+               "Datum": "01.07.2025, 16:28",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:28:16",
+               "Ende": "16:48:16"
+            },
+            {
+               "Datum": "01.07.2025, 16:40",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:40:37",
+               "Ende": "16:55:37"
+            },
+            {
+               "Datum": "01.07.2025, 16:41",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:41:26",
+               "Ende": "16:46:26"
+            },
+            {
+               "Datum": "01.07.2025, 16:54",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:54:11",
+               "Ende": "17:14:11"
+            },
+            {
+               "Datum": "01.07.2025, 17:07",
+               "Kennzeichen": "BBLL1234",
+               "Start": "17:07:22",
+               "Ende": "17:27:22"
+            },
+            {
+               "Datum": "04.07.2025, 11:20",
+               "Kennzeichen": "BBLL1234",
+               "Start": "11:20:55",
+               "Ende": "11:25:55"
+            },
+            {
+               "Datum": "04.07.2025, 11:34",
+               "Kennzeichen": "BBLL1234",
+               "Start": "11:34:54",
+               "Ende": "11:39:54"
+            },
+            {
+               "Datum": "04.07.2025, 11:55",
+               "Kennzeichen": "BBLL1234",
+               "Start": "11:55:37",
+               "Ende": "12:05:37"
+            },
+            {
+               "Datum": "04.07.2025, 12:03",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:03:27",
+               "Ende": "12:08:27"
+            },
+            {
+               "Datum": "04.07.2025, 12:05",
+               "Kennzeichen": "W2727D",
+               "Start": "12:05:24",
+               "Ende": "12:10:24"
+            },
+            {
+               "Datum": "04.07.2025, 12:25",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:25:26",
+               "Ende": "12:35:26"
+            },
+            {
+               "Datum": "04.07.2025, 13:23",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:23:39",
+               "Ende": "13:28:39"
+            },
+            {
+               "Datum": "04.07.2025, 13:28",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:28:05",
+               "Ende": "13:33:05"
+            },
+            {
+               "Datum": "04.07.2025, 14:00",
+               "Kennzeichen": "TETE45",
+               "Start": "14:00:42",
+               "Ende": "14:05:42"
+            },
+            {
+               "Datum": "04.07.2025, 14:01",
+               "Kennzeichen": "TETE45",
+               "Start": "14:01:24",
+               "Ende": "14:06:24"
+            },
+            {
+               "Datum": "04.07.2025, 14:01",
+               "Kennzeichen": "TETE45",
+               "Start": "14:01:28",
+               "Ende": "14:06:28"
+            },
+            {
+               "Datum": "04.07.2025, 14:42",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:42:46",
+               "Ende": "14:52:46"
+            },
+            {
+               "Datum": "04.07.2025, 14:44",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:44:31",
+               "Ende": "14:54:31"
+            },
+            {
+               "Datum": "04.07.2025, 14:44",
+               "Kennzeichen": "AB 123456",
+               "Start": "14:44:56",
+               "Ende": "15:14:56"
+            },
+            {
+               "Datum": "04.07.2025, 14:46",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:46:33",
+               "Ende": "14:56:33"
+            }
+         ]
+      },
+      {
+         "name": "Parkplatz 2",
+         "parkscreeningAktiv": true,
+         "belegt": false,
+         "Parkverlauf": [
+            {
+               "Datum": "2025-05-05",
+               "Kennzeichen": "BBLL1204",
+               "Start": "14:17:33",
+               "Ende": "14:17:335"
+            },
+            {
+               "Datum": "05.05.2025, 15:21",
+               "Kennzeichen": "BBLL1204",
+               "Start": "15:21:26",
+               "Ende": "15:26:26"
+            },
+            {
+               "Datum": "05.05.2025, 17:54",
+               "Kennzeichen": "BBJ123",
+               "Start": "17:54:24",
+               "Ende": "18:19:24"
+            },
+            {
+               "Datum": "26.05.2025, 13:23",
+               "Kennzeichen": "Luni",
+               "Start": "13:23:40",
+               "Ende": "13:28:40"
+            },
+            {
+               "Datum": "26.05.2025, 13:24",
+               "Kennzeichen": "Luni",
+               "Start": "13:24:06",
+               "Ende": "13:29:06"
+            },
+            {
+               "Datum": "26.05.2025, 13:50",
+               "Kennzeichen": "Deno",
+               "Start": "13:50:52",
+               "Ende": "14:05:52"
+            },
+            {
+               "Datum": "26.05.2025, 13:52",
+               "Kennzeichen": "Deno",
+               "Start": "13:52:20",
+               "Ende": "14:07:20"
+            },
+            {
+               "Datum": "26.05.2025, 14:44",
+               "Kennzeichen": "Luni",
+               "Start": "14:44:18",
+               "Ende": "14:59:18"
+            },
+            {
+               "Datum": "26.05.2025, 14:46",
+               "Kennzeichen": "Luni",
+               "Start": "14:46:05",
+               "Ende": "15:06:05"
+            },
+            {
+               "Datum": "26.05.2025, 14:50",
+               "Kennzeichen": "Deno",
+               "Start": "14:50:24",
+               "Ende": "15:00:24"
+            },
+            {
+               "Datum": "26.05.2025, 15:00",
+               "Kennzeichen": "Luni",
+               "Start": "15:00:50",
+               "Ende": "15:15:50"
+            },
+            {
+               "Datum": "27.05.2025, 13:51",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:51:06",
+               "Ende": "14:01:06"
+            },
+            {
+               "Datum": "02.06.2025, 12:15",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:15:28",
+               "Ende": "12:20:28"
+            },
+            {
+               "Datum": "02.06.2025, 12:22",
+               "Kennzeichen": "BBLL4321",
+               "Start": "12:22:33",
+               "Ende": "12:27:33"
+            },
+            {
+               "Datum": "02.06.2025, 12:27",
+               "Kennzeichen": "BBLL4321",
+               "Start": "12:27:22",
+               "Ende": "12:47:22"
+            },
+            {
+               "Datum": "02.06.2025, 12:30",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:30:58",
+               "Ende": "12:35:58"
+            },
+            {
+               "Datum": "02.06.2025, 12:32",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:32:53",
+               "Ende": "12:52:53"
+            },
+            {
+               "Datum": "02.06.2025, 12:35",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:35:17",
+               "Ende": "12:40:17"
+            },
+            {
+               "Datum": "02.06.2025, 12:38",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:38:41",
+               "Ende": "12:43:41"
+            },
+            {
+               "Datum": "03.06.2025, 16:08",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:08:58",
+               "Ende": "16:13:58"
+            },
+            {
+               "Datum": "03.06.2025, 16:22",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:22:42",
+               "Ende": "16:27:42"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:03:32",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:03:42",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:03:48",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:12:40",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:16:00",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:22:20",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:00:00",
+               "Ende": "13:00:07"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max.mustermann@example.com",
+               "Start": "13:09:05",
+               "Ende": "13:10:19"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max.mustermann@example.com",
+               "Start": "13:14:00",
+               "Ende": "13:14:31"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max.mustermann@example.com",
+               "Start": "14:27:59",
+               "Ende": "14:28:10"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "max",
+               "Start": "16:21:12",
+               "Ende": "16:21:25"
+            },
+            {
+               "Datum": "27.06.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:21:40",
+               "Ende": "16:22:02"
+            },
+            {
+               "Datum": "01.07.2025",
+               "Kennzeichen": "BBLL1234",
+               "Start": "10:45:24",
+               "Ende": "10:45:40"
+            },
+            {
+               "Datum": "04.07.2025, 12:04",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:04:58",
+               "Ende": "12:09:58"
+            },
+            {
+               "Datum": "04.07.2025, 12:12",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:12:45",
+               "Ende": "12:22:45"
+            },
+            {
+               "Datum": "04.07.2025, 12:16",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:16:23",
+               "Ende": "12:21:23"
+            },
+            {
+               "Datum": "04.07.2025, 12:33",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:33:33",
+               "Ende": "12:43:33"
+            },
+            {
+               "Datum": "04.07.2025, 12:47",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:47:38",
+               "Ende": "12:57:38"
+            },
+            {
+               "Datum": "04.07.2025, 12:53",
+               "Kennzeichen": "W2727D",
+               "Start": "12:53:47",
+               "Ende": "12:58:47"
+            },
+            {
+               "Datum": "04.07.2025, 12:55",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:55:40",
+               "Ende": "13:05:40"
+            },
+            {
+               "Datum": "04.07.2025, 12:59",
+               "Kennzeichen": "BBLL1234",
+               "Start": "12:59:24",
+               "Ende": "13:29:24"
+            },
+            {
+               "Datum": "04.07.2025, 13:04",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:04:38",
+               "Ende": "13:14:38"
+            },
+            {
+               "Datum": "04.07.2025, 13:21",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:21:47",
+               "Ende": "13:31:47"
+            },
+            {
+               "Datum": "04.07.2025, 13:24",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:24:46",
+               "Ende": "13:29:46"
+            },
+            {
+               "Datum": "04.07.2025, 13:24",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:24:58",
+               "Ende": "13:29:58"
+            },
+            {
+               "Datum": "04.07.2025, 13:25",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:25:05",
+               "Ende": "13:30:05"
+            },
+            {
+               "Datum": "04.07.2025, 13:26",
+               "Kennzeichen": "ESLP2025",
+               "Start": "13:26:31",
+               "Ende": "13:31:31"
+            },
+            {
+               "Datum": "04.07.2025, 13:26",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:26:56",
+               "Ende": "13:31:56"
+            },
+            {
+               "Datum": "04.07.2025, 13:34",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:34:10",
+               "Ende": "13:39:10"
+            },
+            {
+               "Datum": "04.07.2025, 13:44",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:44:15",
+               "Ende": "13:49:15"
+            },
+            {
+               "Datum": "04.07.2025, 13:57",
+               "Kennzeichen": "BBLL1234",
+               "Start": "13:57:25",
+               "Ende": "14:12:25"
+            },
+            {
+               "Datum": "04.07.2025, 14:03",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:03:44",
+               "Ende": "14:13:44"
+            },
+            {
+               "Datum": "04.07.2025, 14:11",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:11:39",
+               "Ende": "14:21:39"
+            },
+            {
+               "Datum": "04.07.2025, 14:21",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:21:46",
+               "Ende": "14:26:46"
+            },
+            {
+               "Datum": "04.07.2025, 14:30",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:30:43",
+               "Ende": "14:35:43"
+            },
+            {
+               "Datum": "04.07.2025, 14:31",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:31:38",
+               "Ende": "14:41:38"
+            },
+            {
+               "Datum": "04.07.2025, 14:35",
+               "Kennzeichen": "BBLL1234",
+               "Start": "14:35:23",
+               "Ende": "14:40:23"
+            },
+            {
+               "Datum": "04.07.2025, 14:42",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:42:46",
+               "Ende": "14:52:46"
+            },
+            {
+               "Datum": "04.07.2025, 14:44",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:44:31",
+               "Ende": "14:54:31"
+            },
+            {
+               "Datum": "04.07.2025, 14:46",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:46:57",
+               "Ende": "14:56:57"
+            },
+            {
+               "Datum": "04.07.2025, 14:46",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:46:59",
+               "Ende": "14:56:59"
+            },
+            {
+               "Datum": "04.07.2025, 14:47",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:47:03",
+               "Ende": "14:57:03"
+            },
+            {
+               "Datum": "04.07.2025, 14:47",
+               "Kennzeichen": "LBKS1119",
+               "Start": "14:47:06",
+               "Ende": "14:57:06"
+            },
+            {
+               "Datum": "04.07.2025, 14:49",
+               "Kennzeichen": "AB 123456",
+               "Start": "14:49:14",
+               "Ende": "14:54:14"
+            },
+            {
+               "Datum": "04.07.2025, 15:05",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:05:41",
+               "Ende": "15:15:41"
+            },
+            {
+               "Datum": "04.07.2025, 15:34",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:34:30",
+               "Ende": "15:44:30"
+            },
+            {
+               "Datum": "04.07.2025, 15:51",
+               "Kennzeichen": "BBLL1234",
+               "Start": "15:51:19",
+               "Ende": "16:06:19"
+            },
+            {
+               "Datum": "04.07.2025, 16:05",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:05:18",
+               "Ende": "16:20:18"
+            },
+            {
+               "Datum": "04.07.2025, 16:09",
+               "Kennzeichen": "BBLL1234",
+               "Start": "16:09:01",
+               "Ende": "16:14:01"
+            }
+         ]
+      }
+   ]
+}
